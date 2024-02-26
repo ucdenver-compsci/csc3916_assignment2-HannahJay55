@@ -84,6 +84,7 @@ router.route('/movies')
         if (req.get('Content-Type')) {
             res = res.type(req.get('Content-Type'));
         }
+        console.log(req.body);
         if (req.body.title) {
             let movie = moviedb.findOne(req.body.title);
             if (movie === undefined) {
@@ -93,7 +94,7 @@ router.route('/movies')
             }
         } else {
             let movie = moviedb.findOne(); //if no title given, returns whole list of movies
-            o.body = {success: true, msg: 'Found movie.', movies: movie};
+            o.body = {success: true, msg: 'Displaying movies.', movies: movie};
         }
         res.json(o);
     })
