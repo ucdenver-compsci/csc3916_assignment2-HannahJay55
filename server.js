@@ -80,11 +80,11 @@ router.post('/signin', (req, res) => {
 router.route('/movies')
     .get((req, res) => { //get movies
         res = res.status(200);
+        console.log(req);
         var o = getJSONObjectForMovieRequirement(req);
         if (req.get('Content-Type')) {
             res = res.type(req.get('Content-Type'));
         }
-        console.log(req.body);
         if (req.body.title) {
             let movie = moviedb.findOne(req.body.title);
             if (movie === undefined) {
